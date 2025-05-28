@@ -8,24 +8,33 @@ class HTMLToPDFConverter {
     this.browser = null;
   }
 
-async initialize() {
-  this.browser = await puppeteer.launch({
-    headless: true,
-    executablePath: '/usr/bin/google-chrome-stable',
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--no-first-run',
-      '--no-zygote',
-      '--disable-gpu',
-      '--disable-background-timer-throttling',
-      '--disable-backgrounding-occluded-windows',
-      '--disable-renderer-backgrounding'
-    ]
-  });
-}
+  async initialize() {
+    // Detect if running on Render or locally
+    const isRender = process.env.RENDER || process.env.IS_PULL_REQUEST;
+
+    const launchOptions = {
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--no-first-run',
+        '--no-zygote',
+        '--disable-gpu',
+        '--disable-background-timer-throttling',
+        '--disable-backgrounding-occluded-windows',
+        '--disable-renderer-backgrounding'
+      ]
+    };
+
+    // Only specify executablePath if NOT on Render
+    if (!isRender && fsSync.existsSync('/usr/bin/google-chrome-stable')) {
+      launchOptions.executablePath = '/usr/bin/google-chrome-stable';
+    }
+
+    this.browser = await puppeteer.launch(launchOptions);
+  }
 
   async close() {
     if (this.browser) {
