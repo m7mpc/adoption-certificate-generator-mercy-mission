@@ -139,7 +139,7 @@ function generateHTMLWithData(data) {
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Cairo', 'Poppins', sans-serif;
             background-color: #f8fafb;
             padding: 0;
             margin: 0;
