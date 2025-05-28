@@ -1,0 +1,12 @@
+{
+  "name": "gaza-adoption-program",
+  "version": "1.0.0",
+  "description": "PDF generation for Gaza Virtual Adoption Program",
+  "main": "html-to-pdf.js",
+  "scripts": {
+    "generate-pdf": "node html-to-pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
