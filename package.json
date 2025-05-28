@@ -1,16 +1,11 @@
 {
-  "name": "gaza-adoption-program",
+  "name": "adoption-certificate-generator",
   "version": "1.0.0",
-  "description": "PDF generation for Gaza Virtual Adoption Program",
-  "main": "html-to-pdf.js",
+  "description": "Gaza Adoption Certificate Generator",
   "scripts": {
-    "generate-pdf": "node html-to-pdf.js"
+    "start": "node html-to-pdf.js"
   },
   "dependencies": {
-    "puppeteer": "^21.0.0"
-  },
-    "config": {
-    "puppeteer_skip_chromium_download": "true"
+    "puppeteer": "^22.8.2"
   }
 }
-
