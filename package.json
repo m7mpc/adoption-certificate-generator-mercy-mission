@@ -8,5 +8,9 @@
   },
   "dependencies": {
     "puppeteer": "^21.0.0"
+  },
+    "config": {
+    "puppeteer_skip_chromium_download": "true"
   }
 }
+
